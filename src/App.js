@@ -76,6 +76,19 @@ const App = () => {
     }, 1000)
   }
 
+  const col_acciones = [
+    {
+      dataField: 'cost',
+      text: ' cost',
+      sort: true,
+    },
+    {
+      dataField: 'impression',
+      text: 'imp',
+      sort: true,
+    },
+  ]
+
   return (
     <div className="container-fluid p-3 mb-2 App">
       <div className="sweet-loading d-flex justify-content-center ">
@@ -115,6 +128,7 @@ const App = () => {
             {/*  <Table headers={Object.keys(schema)} rows={datos} theme={checked} /> */}
 
             <BootTable datos={datos} theme={checked}></BootTable>
+            <BootTable datos={mocks} theme={checked} col={col_acciones}></BootTable>
           </div>
         </div>
       </div>

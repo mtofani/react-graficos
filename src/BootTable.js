@@ -1,6 +1,5 @@
 import BootstrapTable from 'react-bootstrap-table-next'
 
-import filterFactory, { textFilter } from 'react-bootstrap-table2-filter'
 import { ToolkitProvide, CSVExport, ColumnToggle } from 'react-bootstrap-table2-toolkit'
 import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css'
 import paginationFactory from 'react-bootstrap-table2-paginator'
@@ -13,7 +12,6 @@ const columns = [
     dataField: 'name',
     text: ' Name',
     sort: true,
-    filter: textFilter({ placeholder: 'Filtra aqui!' }),
   },
   {
     dataField: 'height',
@@ -38,7 +36,7 @@ const rowEvents = {
 
 const BootTable = props => {
   let styleTable = props.theme ? 'table table-striped table-hover table-dark' : 'table table-striped table-hover'
-
+  let columnas = props.col ? props.col : columns
   return (
     <div>
       <BootstrapTable
@@ -47,8 +45,7 @@ const BootTable = props => {
         keyField="name"
         data={props.datos}
         classes={styleTable}
-        columns={columns}
-        filter={filterFactory({})}
+        columns={columnas}
         selectRow={selectRow}
         rowEvents={rowEvents}
         pagination={paginationFactory({ showTotal: true, sizePerPage: 10 })}
